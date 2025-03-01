@@ -134,3 +134,22 @@ While the **copula method** was tested for trade signal refinement, it **ran int
 - **Success rates above 90%** were observed for most pairs, validating the robustness of the strategy.
 - **Copula-based modeling requires further optimization** to be practical for real-time applications.
 
+
+### Section 8: Enhancements and Considerations
+- **Optimization of Computation**: The current implementation for 40 coin pairs took several hours, while extending to 780 pairs required almost 10 hours. To enhance efficiency:
+  - Utilize parallel processing (e.g., `multiprocessing` or `joblib`).
+  - Optimize rolling regression calculations with vectorized operations.
+  - Implement caching mechanisms for redundant computations.
+
+- **Copula Model Challenges**:
+  - **Backfiring in Certain Market Conditions**: Some copulas, particularly Clayton and Gumbel, failed to capture dynamic dependencies, leading to misaligned trade signals.
+  - **AIC-Based Selection**: While AIC minimizes overfitting, alternative selection criteria (e.g., BIC or cross-validation) might improve robustness.
+  - **Conditional Probability Inconsistencies**: Certain copulas produced unstable conditional probabilities, resulting in unreliable trading decisions.
+
+- **Data Handling and Preprocessing**:
+  - Improved missing data imputation strategies to ensure stability across different market scenarios.
+  - Adaptive windowing strategies to dynamically adjust based on volatility.
+
+- **Scalability Considerations**:
+  - With a larger dataset, consider cloud-based computing solutions (e.g., AWS Lambda, Google Cloud Functions) to distribute workload efficiently.
+  - Implement real-time streaming for copula-based trading signals instead of static batch processing.
