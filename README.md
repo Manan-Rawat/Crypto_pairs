@@ -135,7 +135,7 @@ While the **copula method** was tested for trade signal refinement, it **ran int
 - **Copula-based modeling requires further optimization** to be practical for real-time applications.
 
 
-### Section 8: Enhancements and Considerations
+### **8. Enhancements and Considerations**
 - **Optimization of Computation**: The current implementation for 40 coin pairs took several hours, while extending to 780 pairs required almost 10 hours. To enhance efficiency:
   - Utilize parallel processing (e.g., `multiprocessing` or `joblib`).
   - Optimize rolling regression calculations with vectorized operations.
