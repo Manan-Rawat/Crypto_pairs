@@ -95,30 +95,30 @@ The following outlines the step-by-step process of the code execution:
 ## **7. Results and Key Findings**
 
 ### **7.1 Mean Reversion Trade Success Rates**
-The strategy was applied to multiple cryptocurrency pairs, and the **top 20 performing pairs** are listed below. The success rate represents the percentage of profitable trades executed during the backtesting period.
+The strategy was applied to pairs 40 coins, therefore 780  cryptocurrency pairs, and the **top 20 performing pairs** are listed below. The success rate represents the percentage of profitable trades executed during the backtesting period.
 
-| Pair         | Best Window | PnL   | Success Rate |
-|-------------|------------|-------|--------------|
-| ADA-BCH     | 1 week     | 100.00 | 94.87%       |
-| ADA-BTC     | 1 week     | 100.00 | 97.87%       |
-| ADA-FLM     | 1 week     | 100.00 | 97.87%       |
-| ADA-GALA    | 1 week     | 100.00 | 87.50%       |
-| AGLD-ALGO   | 1 week     | 100.00 | 97.14%       |
-| AGLD-FLOKI  | 1 week     | 100.00 | 91.30%       |
-| ALGO-FLM    | 1 week     | 100.00 | 98.15%       |
-| ALGO-FLOKI  | 1 week     | 100.00 | 86.21%       |
-| APE-BONK    | 1 week     | 100.00 | 85.00%       |
-| APE-GFT     | 1 week     | 100.00 | 92.11%       |
-| BADGER-DGB  | 1 week     | 100.00 | 96.23%       |
-| BADGER-GALA | 1 week     | 100.00 | 97.87%       |
-| BAL-BAND    | 1 week     | 100.00 | 97.30%       |
-| BAL-CHZ     | 1 week     | 100.00 | 97.22%       |
-| BAL-DOGE    | 1 week     | 100.00 | 92.59%       |
-| BAL-FLM     | 1 week     | 100.00 | 100.00%      |
-| BAL-GFT     | 1 week     | 100.00 | 96.97%       |
-| BAND-GFT    | 1 week     | 100.00 | 94.12%       |
-| BAT-FLOKI   | 1 week     | 100.00 | 93.33%       |
-| CSPR-GFT    | 1 week     | 100.00 | 93.10%       |
+| Pair         | Success Rate |
+|-------------|--------------|
+| ADA-BCH     | 94.87%       |
+| ADA-BTC     | 97.87%       |
+| ADA-FLM     | 97.87%       |
+| ADA-GALA    | 87.50%       |
+| AGLD-ALGO   | 97.14%       |
+| AGLD-FLOKI  | 91.30%       |
+| ALGO-FLM    | 98.15%       |
+| ALGO-FLOKI  | 86.21%       |
+| APE-BONK    | 85.00%       |
+| APE-GFT     | 92.11%       |
+| BADGER-DGB  | 96.23%       |
+| BADGER-GALA | 97.87%       |
+| BAL-BAND    | 97.30%       |
+| BAL-CHZ     | 97.22%       |
+| BAL-DOGE    | 92.59%       |
+| BAL-FLM     | 100.00%      |
+| BAL-GFT     | 96.97%       |
+| BAND-GFT    | 94.12%       |
+| BAT-FLOKI   | 93.33%       |
+| CSPR-GFT    | 93.10%       |
 
 The **average success rate across the top 20 pairs** was **94.34%**, indicating that the mean reversion strategy performed well in capturing profitable trading opportunities.
 
