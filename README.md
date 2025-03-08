@@ -95,7 +95,7 @@ The following outlines the step-by-step process of the code execution:
 ## **7. Results and Key Findings**
 
 ### **7.1 Mean Reversion Trade Success Rates**
-The strategy was applied to pairs 40 coins, therefore 780  cryptocurrency pairs, and the **top 20 performing pairs** are listed below. The success rate represents the percentage of profitable trades executed during the backtesting period.
+The strategy was applied to 40 coins, therefore 780  cryptocurrency pairs, and the **top 20 performing pairs** are listed below. The success rate represents the percentage of profitable trades executed during the backtesting period.
 
 | Pair         | Success Rate |
 |-------------|--------------|
