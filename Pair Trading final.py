@@ -32,7 +32,7 @@ for idx, file in enumerate(csv_files):
 merged_df = pd.concat(dfl, axis=1)
 merged_df.columns = [modified_dict[i] for i in range(len(dfl))]
 merged_df = merged_df.dropna()
-merged_df = merged_df[['1INCH', 'AAVE', 'ACE', 'ACH', 'ADA', 'AEVO']]
+
 cdf_df = merged_df.apply(lambda x: rankdata(x) / len(x), axis=0)
 
 train_size = int(len(cdf_df) * 0.6)
