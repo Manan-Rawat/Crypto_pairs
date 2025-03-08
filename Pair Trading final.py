@@ -32,7 +32,7 @@ for idx, file in enumerate(csv_files):
 merged_df = pd.concat(dfl, axis=1)
 merged_df.columns = [modified_dict[i] for i in range(len(dfl))]
 merged_df = merged_df.dropna()
-
+merged_df = merged_df[['1INCH', 'AAVE', 'ACE', 'ACH', 'ADA', 'AEVO']]
 cdf_df = merged_df.apply(lambda x: rankdata(x) / len(x), axis=0)
 
 train_size = int(len(cdf_df) * 0.6)
@@ -109,6 +109,39 @@ for i, col1 in enumerate(cdf_df.columns):
 
 top_20_pairs = sorted(results, key=lambda x: x[2], reverse=True)[:20]
 
+def mean_reversion_trade_success(data, window, position_size=100, transaction_fee_rate=0.00015, slippage_rate=0.00015, k1=1.0, k2=1.0):
+    mean_spread = data.rolling(window).mean()
+    std_spread = data.rolling(window).std()
+    position, entry_spread, profitable_trades, total_trades = 0, 0, 0, 0
+
+    for i in range(len(data)):
+        current_spread = data.iloc[i]
+        upper_entry_threshold = mean_spread.iloc[i] + k1 * std_spread.iloc[i]
+        lower_entry_threshold = mean_spread.iloc[i] - k2 * std_spread.iloc[i]
+        upper_exit_threshold = mean_spread.iloc[i]
+        lower_exit_threshold = mean_spread.iloc[i]
+
+        if position == 0:
+            if current_spread > upper_entry_threshold:
+                position = -1
+                entry_spread = current_spread
+            elif current_spread < lower_entry_threshold:
+                position = 1
+                entry_spread = current_spread
+        elif position == 1 and current_spread > lower_exit_threshold:
+            pnl = (current_spread - entry_spread) * position_size
+            total_trades += 1
+            profitable_trades += 1 if pnl > 0 else 0
+            position = 0
+        elif position == -1 and current_spread < upper_exit_threshold:
+            pnl = (entry_spread - current_spread) * position_size
+            total_trades += 1
+            profitable_trades += 1 if pnl > 0 else 0
+            position = 0
+
+    success_rate = (profitable_trades / total_trades) * 100 if total_trades > 0 else 0
+    return success_rate
+
 top_20_cointegration_results = [
     (pair[0], coint(train_data[pair[0].split('-')[0]], train_data[pair[0].split('-')[1]])[1], pair[2], pair[3])
     for pair in top_20_pairs
@@ -142,8 +175,6 @@ for result in trade_success_results:
     pair_name, best_window, best_pnl, success_rate = result
     print(f"PAIR: {pair_name}, BEST WINDOW: {best_window}, PNL: {best_pnl:.2f}, SUCCESS RATE: {success_rate:.2f}%")
     s=s+success_rate
-
-print (s/20)
 
 
 quantile_data = cdf_df
@@ -225,11 +256,4 @@ for result in top_5_pairs:
     trades = trading_strategy_with_copula(pair_data, params, copulas[copula_name])
 
     print(f"Pair: {pair}, Trades: {trades}")
-
-
-
-# In[ ]:
-
-
-
 
